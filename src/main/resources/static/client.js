@@ -6,6 +6,11 @@ document.addEventListener('DOMContentLoaded', function() {
     var localVideo = document.getElementById('localVideo');
     var remoteVideo = document.getElementById('remoteVideo');
 
+    // Get the messaging elements
+    var messagesDiv = document.getElementById('messages');
+    var messageInput = document.getElementById('messageInput');
+    var sendButton = document.getElementById('sendButton');
+
     // Create a new peer connection
     var pc = new RTCPeerConnection();
 
@@ -109,10 +114,35 @@ document.addEventListener('DOMContentLoaded', function() {
                     console.error('Error adding received ICE candidate:', error);
                 });
                 break;
+            case 'text':
+                // Display received text message
+                var p = document.createElement('p');
+                p.textContent = `Peer: ${message.text}`;
+                messagesDiv.appendChild(p);
+                break;
             default:
                 console.error('Unknown message type:', message.type);
         }
     };
+
+    // Send text message on button click
+    sendButton.addEventListener('click', function() {
+        var message = messageInput.value;
+        if (message.trim()) {
+            conn.send(JSON.stringify({
+                type: 'text',
+                text: message
+            }));
+
+            // Display sent message
+            var p = document.createElement('p');
+            p.textContent = `You: ${message}`;
+            messagesDiv.appendChild(p);
+
+            // Clear the input field
+            messageInput.value = '';
+        }
+    });
 
     conn.onerror = function(event) {
         console.error('Error occurred:', event);

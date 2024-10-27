@@ -3,6 +3,16 @@ Simple Video Chat Application Using WebRTC (Web Real-Time Communication). WebRTC
 There are many underlying problems related to video and audio transmission, such as bandwidth adaptivity, noise reduction and suppression, and packet-loss concealment to
 name a few. WebRTC handles all of these issues under the hood, making it a great choice for real-time communications.
 
+![img.png](src/main/resources/chat_app_example.png)
+## How to Run:
+Clone the project, and run the following commands in the terminal from the root:
+```
+mvnw spring-boot:run
+cd src/main/resources/static
+open index.html
+```
+***Note:*** This project runs on localhost. The default port is 8080, but you can change the port by changing the port number in the `server.port` field in `src/main/resources/application.properties` file.
+
 ## Java/Spring Backend:
 The Java/Spring Boot backend creates a signaling server by utilizing spring boots websocket starter framework. We register a socket handler at path */socket* that uses a
 SocketHandler (class we defined, not the one provided by java logging) to handle incoming messages. Peers that have established a connection with our signaling server can 
@@ -46,8 +56,8 @@ A simple HTML file with some basic CSS to display the video streams from the loc
    4. `onerror`: Handles any errors that occur in the WebSocket connection.
 
 # Future Improvements:
+- Host elsewhere, currently just a local MVP.
 - Add support for multiple connections
-- Add support for sending messages to connected peers
 - Stop displaying video after remote or local peer disconnects (currently displays a still image after the video stream ends)
 
 #### This was created as a response to John Crickett's coding challenge #76 on 10/26/2024. For more info, see [John's Challenge](https://codingchallenges.substack.com/p/coding-challenge-76-build-your-own).
