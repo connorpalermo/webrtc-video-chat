@@ -11,7 +11,9 @@ mvnw spring-boot:run
 cd src/main/resources/static
 open index.html
 ```
-***Note:*** This project runs on localhost. The default port is 8080, but you can change the port by changing the port number in the `server.port` field in `src/main/resources/application.properties` file.
+Copy the address of the index.html file in your browser and paste it into another tab or another browser to simulate the remote peer.
+
+***Note:*** The backend for this project runs on localhost. The default port is 8080, but you can change the port by changing the port number in the `server.port` field in `src/main/resources/application.properties` file.
 
 ## Java/Spring Backend:
 The Java/Spring Boot backend creates a signaling server by utilizing spring boots websocket starter framework. We register a socket handler at path */socket* that uses a
