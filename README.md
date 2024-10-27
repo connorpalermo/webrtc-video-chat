@@ -16,7 +16,7 @@ Copy the address of the index.html file in your browser and paste it into anothe
 ***Note:*** The backend for this project runs on localhost. The default port is 8080, but you can change the port by changing the port number in the `server.port` field in `src/main/resources/application.properties` file.
 
 ## Java/Spring Backend:
-The Java/Spring Boot backend creates a signaling server by utilizing spring boots websocket starter framework. We register a socket handler at path */socket* that uses a
+The Java/Spring Boot backend creates a signaling server by utilizing Spring Boot's websocket starter framework. We register a socket handler at path */socket* that uses a
 SocketHandler (class we defined, not the one provided by java logging) to handle incoming messages. Peers that have established a connection with our signaling server can 
 send messages in the form of offer, answer, and candidate messages. The Java/Spring Boot backend then handles these messages and sends them to the other peer. **Code can be
 found in src/main/resources/static**.
