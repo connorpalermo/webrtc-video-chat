@@ -6,7 +6,8 @@ name a few. WebRTC handles all of these issues under the hood, making it a great
 ## Java/Spring Backend:
 The Java/Spring Boot backend creates a signaling server by utilizing spring boots websocket starter framework. We register a socket handler at path */socket* that uses a
 SocketHandler (class we defined, not the one provided by java logging) to handle incoming messages. Peers that have established a connection with our signaling server can 
-send messages in the form of offer, answer, and candidate messages. The Java/Spring Boot backend then handles these messages and sends them to the other peer.
+send messages in the form of offer, answer, and candidate messages. The Java/Spring Boot backend then handles these messages and sends them to the other peer. **Code can be
+found in src/main/resources/static**.
 
 ### Offer:
 An offer is a message that contains an offer to connect to the other peer. The offer contains the following:
